@@ -61,6 +61,15 @@ int checkMauvaisePlace(int *guess, int *code) {
     return almost;
 }
 
+void AfficherMastermind() {
+    int i;
+    for (i = 0; i < MAX_TENTATIVES; i++) {
+        printf("|---------------|\n");
+        printf("|   |   |   |   |..| Ligne %d\n", i);
+    }
+    printf("|---------------|\n\n");
+}
+
 void launch() {
     void generateCode(int *code);
     void getGuess(int *guess);
@@ -79,12 +88,7 @@ int main() {
 
     launch();
     generateCode(code);
-
-    // Phase test
-    for(i=0;i<LARGEUR_CODE;i++) {
-        printf("%d",code[i]);
-    }
-
+    AfficherMastermind();
     printf("\n\n");
     printf("Mastermind - Projet 3\n");
     printf("Il faut trouver une séquence de %d couleurs parmi %d choix.\n", LARGEUR_CODE, NUMERO_COULEUR);
@@ -114,9 +118,9 @@ int main() {
             guessesLeft--;
             printf("%d couleurs sont correctes et bien placées.\n", result);
             printf("%d couleurs sont correctes mais mal placées.\n\n", result2);
-            
         }
     }
+
     printf("Perdu! Le code était :");
     for (i = 0; i < LARGEUR_CODE; i++) {
         printf("%d ", code[i]);
